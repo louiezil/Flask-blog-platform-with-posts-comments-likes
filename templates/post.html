@@ -1,0 +1,46 @@
+{% extends 'base.html' %} {% block title %} post {% endblock title %} {% block
+content %}
+<div class="single_post_container">
+  <div class="comment_comment_area">
+    {% include 'post_base.html' %}
+    <div class="comment">
+      <form action="/comment/post/{{post.post_id}}" method="post">
+        <div class="input">
+          <input
+            type="text"
+            name="content"
+            placeholder="Make a Comment"
+            required
+          />
+          <button type="submit">Add Comment</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="comment_section">
+    {% if not comments %}
+    <p>No Comments Yet</p>
+    <p>be the First</p>
+    {% else %}
+    <b>Comments</b>
+    {% for comment in comments %}
+
+    <div class="comment_container">
+      <div class="name_time">
+        <b>{{comment.user_name}}</b>
+        <b>{{comment.date_created}}</b>
+      </div>
+      <p>{{comment.content}}</p>
+      <form
+        action="/post/delete/comment/{{comment.comment_id}}/{{post.post_id}}"
+        class="delete"
+        method="post"
+      >
+        <button type="submit">Delete</button>
+      </form>
+    </div>
+    {% endfor %} {% endif %}
+  </div>
+</div>
+
+{% endblock content %}

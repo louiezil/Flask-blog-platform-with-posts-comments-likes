@@ -1,0 +1,27 @@
+{% extends 'base.html' %} {% block title %} Login {% endblock title %} {% block
+content %}
+<form class="login_form" method="post">
+  <div class="input_form">
+    <input
+      type="email"
+      required
+      minlength="9"
+      placeholder="Enter email"
+      name="email"
+    />
+  </div>
+  <div class="input_form">
+    <input
+      type="password"
+      required
+      placeholder="Enter password"
+      name="password"
+      min="6"
+    />
+  </div>
+  {% if error %}
+  <p class="error">{{error}}</p>
+  {% endif %}
+  <button class="btn" type="submit">Login</button>
+</form>
+{% endblock content %}

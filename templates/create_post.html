@@ -1,0 +1,47 @@
+{% extends 'base.html' %} {% block title %} Creating Post {% endblock title %}
+{% block content %}
+<div class="post_creation">
+  <form action="" class="create_post_form" method="post">
+    <b> Create Post</b>
+    <div class="input_form">
+      <input
+        type="text"
+        name="title"
+        required
+        placeholder="Enter Title"
+        min="4"
+      />
+    </div>
+
+  <div class="input_form">
+        <textarea 
+        type="text"
+        name="content"
+        required
+        placeholder="Enter Content"
+        min="5"></textarea>
+    </div>
+    <div class="input_form">
+      <input
+        type="text"
+        name="image"
+        placeholder="upload Image..."
+        min="5"
+      />
+    </div>
+
+    <select name="category">
+      <option value="1">Technology</option>
+      <option value="2">social</option>
+      <option value="3">Anime</option>
+      <option value="4">Python</option>
+    </select>
+    <button type="submit" class="btn">Submit</button>
+  </form>
+  
+  {% if error %}
+    <p class="error">{{error}}</p>
+  {% endif %}
+    
+</div>
+{% endblock content %}

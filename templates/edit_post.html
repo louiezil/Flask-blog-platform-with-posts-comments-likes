@@ -1,0 +1,53 @@
+{% extends 'base.html' %} {% block title %} EditPost {% endblock title %} {%
+block content %}
+<p>edit post</p>
+<div class="post_creation">
+  <form class="create_post_form" method="post">
+    <b>Editing Post</b>
+    <div class="input_form">
+      <input
+        type="text"
+        name="title"
+        required
+        placeholder="{{post.title}}"
+        value="{{post.title}}"
+        min="4"
+      />
+    </div>
+
+    <div class="input_form">
+        <textarea 
+         type="text"
+        name="content"
+        required
+        placeholder="{{post.content}}"
+        value="{{post.content}}"
+        min="5"></textarea>
+   
+    </div>
+    <div class="input_form">
+      <input type="text" name="image" placeholder="upload Image..." min="5" />
+    </div>
+
+    <select name="category">
+      <option value="1" {% if post.category_id =="1" %} selected {% endif %}>
+        Technology
+      </option>
+      <option value="2" {% if post.category_id =="2" %} selected {% endif %}>
+        social
+      </option>
+      <option value="3" {% if post.category_id =="3" %} selected {% endif %}>
+        Anime
+      </option>
+      <option value="4" {% if post.category_id =="4" %} selected {% endif %}>
+        Python
+      </option>
+    </select>
+    <button type="submit" class="btn">Submit</button>
+  </form>
+
+  {% if error %}
+  <p>{{error}}</p>
+  {% endif %}
+</div>
+{% endblock content %}

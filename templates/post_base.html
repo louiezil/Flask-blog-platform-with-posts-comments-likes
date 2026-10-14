@@ -1,0 +1,40 @@
+<div class="post_container">
+  <div class="post_wrapper">
+    <a href="/post/{{post.post_id}}">{{post.title}}</a>
+    <div class="author_date">
+      <b> by {{post.author_name}} in {{post.category_name}}</b>
+      <b> {{post.date_created}} </b>
+    </div>
+    <div class="post_content">
+      <p>{{post.content}}</p>
+    </div>
+    <div class="likes_comments">
+      <div class="likes_comments_action">
+        <form action="/like_unlike/{{post.post_id}}" method="post">
+          <button type="submit">
+            {% if user_liked %} ❤️ {% else %} 🤍 {% endif %} {% if not
+            post.likes_count %} 0 {% else %} {{post.likes_count}} {% endif %}
+          </button>
+        </form>
+        <p>
+          💬 {% if not post.comments_count %} 0 {% else %}
+          {{post.comments_count}} {% endif %}
+        </p>
+      </div>
+
+      {% if post.author_id != session.get('user_id') %} {% else %}
+      <div class="delete_edit">
+        <form
+          action="/delete_post/{{post.post_id}}"
+          method="post"
+          class="delete-form"
+          onsubmit="return confirm('confirm post deletion...y/n');"
+        >
+          <button type="submit">Delete</button>
+        </form>
+        <a href="/post_edit/{{post.post_id}}">Edit</a>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</div>

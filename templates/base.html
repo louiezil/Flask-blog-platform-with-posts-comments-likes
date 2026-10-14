@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css')}}"
+    />
+    <title>{% block title %} {% endblock title %}</title>
+  </head>
+  <body>
+    <div class="navbar">
+      <a href="/" class="logo">LöGO</a>
+      <div class="action">
+        {% if session.get('username') %}
+        <a href="/create_post">Create Post</a>
+        <a href="/dashboard/{{session.get('user_id')}}">{{session.get('username')}}</a>
+        <form action="/logout" class="logout">
+          <button type="submit">Logout</button>
+        </form>
+        {% else %}
+        <a href="/login"> Login </a>
+        <a href="/register">register</a>
+        {% endif %}
+      </div>
+    </div>
+
+    {% block content %} {% endblock content %}
+
+    <div class="footer">
+      <p>this is the footer</p>
+      <p>2026 @</p>
+    </div>
+  </body>
+</html>

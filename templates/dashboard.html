@@ -1,0 +1,56 @@
+{% extends 'base.html' %} {% block title %} {{session.get('username')}}Dashboard
+{% endblock title %} {% block content %}
+<div class="dash_container">
+  <div class="profile">
+    <b>profile</b>
+
+    <div class="profile_and_details">
+      <div class="image"></div>
+      <b>{{user.name}}</b>
+      <b>{{user.email}}</b>
+
+      {% if user.bio %}
+      <div class="bio">{{user.bio}}</div>
+      {% endif %}
+
+      <b>Date Created : {{user.date_created}}</b>
+      <div class="like_posts">
+        <div class="likes">
+          <b>
+            {% if not user.user_likes %} 0 {% else %} {{user.user_likes}} {%
+            endif %}
+          </b>
+          <b>Likes</b>
+        </div>
+        <div class="posts">
+          <b>
+            {% if not user.posts_count %} 0{% else %}  {{user.posts_count}}  {% endif
+            %}
+          </b>
+          <b>posts</b>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="user_posts">
+    <b>My Posts</b>
+    <div class="user_posts">
+      {% if user_posts %} {% for post,user_liked in user_posts %} {% include
+      'post_base.html' %} {% endfor %} {% else %}
+      <p>No Posts Yet....</p>
+      <a href="/create_post">Create Post</a>
+      {% endif %}
+    </div>
+  </div>
+  <div class="global_posts">
+    <b>Posts you liked</b>
+    <div class="liked_posts">
+      {% if not all_posts %}
+      <p>Haven't Liked any Posts Yet</p>
+      {% else %} {% for post,user_liked in all_posts %} {% include
+      'post_base.html' %} {% endfor %} {% endif %}
+    </div>
+  </div>
+</div>
+
+{% endblock content %}
