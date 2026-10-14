@@ -31,6 +31,8 @@ content %}
         <b>{{comment.date_created}}</b>
       </div>
       <p>{{comment.content}}</p>
+
+      {% if comment.user_id == session.get('user_id') %}
       <form
         action="/post/delete/comment/{{comment.comment_id}}/{{post.post_id}}"
         class="delete"
@@ -38,6 +40,7 @@ content %}
       >
         <button type="submit">Delete</button>
       </form>
+      {% endif %}
     </div>
     {% endfor %} {% endif %}
   </div>

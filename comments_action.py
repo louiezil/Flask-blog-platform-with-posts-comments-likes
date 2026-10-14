@@ -67,9 +67,15 @@ def delete_comment(cursor, conn, comment_id):
         return False
 
 
+def get_comment(cursor, session_id):
+    try:
+        cursor.execute("SELECT user_id FROM comments WHERE user_id = ?", (session_id,))
+    except Exception as e:
+        print(f"error fetching comment :{e}")
+        return None
+
+
 # total comments of a user
 
-'every comment has a post_id'
-'every post_id has an author_id'
-
-
+"every comment has a post_id"
+"every post_id has an author_id"

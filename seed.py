@@ -4,66 +4,66 @@
 # 3. create_tables() with 5 tables
 # 4. close_connection() function
 # 5. Test block: python database.py
-from auth import register_user, Login
-from database import conn_cursor, create_tables
-from post_actions import register_post,get_all_posts,get_single_post,get_user_posts
-from comments_action import comment_register, get_post_comments
+# from auth import register_user, Login
+# from database import conn_cursor, create_tables
+# from post_actions import register_post,get_all_posts,get_single_post,get_user_posts
+# from comments_action import comment_register, get_post_comments
 
-name = "louis"
-password = "password"
-email = f"{name}@gmail.com"
-bio = ""
+# name = "louis"
+# password = "password"
+# email = f"{name}@gmail.com"
+# bio = ""
 
 
-def register(conn, cursor):
+# def register(conn, cursor):
 
-    registered = register_user(conn, cursor, name, email, password, bio)
-    if registered:
-        print("user registered success")
-        return True
-    print("registration failed")
-    return False
+#     registered = register_user(conn, cursor, name, email, password, bio)
+#     if registered:
+#         print("user registered success")
+#         return True
+#     print("registration failed")
+#     return False
 
 
 # create post
 
 
-if __name__ == "__main__":
-    conn, cursor = conn_cursor()
-    create_tables(conn, cursor)
-    "creating comment"
+# if __name__ == "__main__":
+#     conn, cursor = conn_cursor()
+#     create_tables(conn, cursor)
+#     "creating comment"
     
     
-'get post and view the likes and comments'
+# 'get post and view the likes and comments'
 
 
 
-    # content = "y dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since 1966, when designers at L"
-    # post_id = 1
-    # user_id = 1
-    # comment_register(cursor, conn, content, post_id, user_id)
-    # comments = get_post_comments(cursor, post_id)
+#     # content = "y dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since 1966, when designers at L"
+#     # post_id = 1
+#     # user_id = 1
+#     # comment_register(cursor, conn, content, post_id, user_id)
+#     # comments = get_post_comments(cursor, post_id)
 
-    # for each in comments:
-    #     print(each.user_name)
-    # register(conn, cursor)
-    # user = Login(cursor, email, password)
-    # if user:
-    #     print(user.name)
-    #     print(user.email)
-    #     print(user.date_created)
-    #     print(user.bio)
+#     # for each in comments:
+#     #     print(each.user_name)
+#     # register(conn, cursor)
+#     # user = Login(cursor, email, password)
+#     # if user:
+#     #     print(user.name)
+#     #     print(user.email)
+#     #     print(user.date_created)
+#     #     print(user.bio)
 
-    # "register a post"
+#     # "register a post"
 
-# user_id = 1
-# title = "Beginner Guide for python Program"
-# content = " is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since 1966, when designers at Letraset and James Mosley, the librarian at St Bride Printing Library in London, took a 1914 Cicero translation and scrambled it to make dummy text for Letraset's Body Type sheets. It has survived not only many decades, but also the leap into "
+# # user_id = 1
+# # title = "Beginner Guide for python Program"
+# # content = " is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since 1966, when designers at Letraset and James Mosley, the librarian at St Bride Printing Library in London, took a 1914 Cicero translation and scrambled it to make dummy text for Letraset's Body Type sheets. It has survived not only many decades, but also the leap into "
 
-# image = ""
-# category_id = 1
+# # image = ""
+# # category_id = 1
 
-# let seed a category
+# # let seed a category
 
 # data = {
 #     "Technology": {
