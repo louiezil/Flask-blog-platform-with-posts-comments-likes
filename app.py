@@ -28,38 +28,22 @@ app.secret_key = os.environ.get('SECRET_KEY',"this_is_the_secret_key")
 conn, cursor = conn_cursor()
 create_tables(conn, cursor)
 
-data = {
-    "Technology": {
-        "title": "Technology",
-        "description": "ndustry's standard dummy text ever since 1966, when designers at Letraset and James Mosley, the librarian at St Bride",
-    },
-    "social": {
-        "title": "social",
-        "description": "ndustry's standard dummy text ever since 1966, when designers at Letraset and James Mosley, the librarian at St Bride",
-    },
-    "Anime": {
-        "title": "Anime",
-        "description": "ndustry's standard dummy text ever since 1966, when designers at Letraset and James Mosley, the librarian at St Bride",
-    },
-    "Python": {
-        "title": "Python",
-        "description": "ndustry's standard dummy text ever since 1966, when designers at Letraset and James Mosley, the librarian at St Bride",
-    },
-}
-
-
-def create_cat():
-    for each, info in data.items():
+# Auto-seed categories on startup
+cursor.execute("SELECT COUNT(*) FROM categories")
+if cursor.fetchone()[0] == 0:
+    categories = [
+        ("Technology", "Tech-related posts"),
+        ("Social", "Social discussions"),
+        ("Anime", "Anime talk"),
+        ("Python", "Python programming"),
+    ]
+    for name, description in categories:
         cursor.execute(
-            "INSERT INTO categories (name,description)VALUES(?,?)",
-            (
-                each,
-                info["description"],
-            ),
+            "INSERT INTO categories (name, description) VALUES (?, ?)",
+            (name, description)
         )
-        conn.commit()
-    return True
-
+    conn.commit()
+    print("✅ Categories auto-seeded")
 
 
 # Setup:
