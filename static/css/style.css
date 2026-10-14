@@ -275,7 +275,6 @@ body {
   gap: 1rem;
   width: fit-content;
   margin: auto;
-
 }
 
 .likes,
@@ -285,12 +284,12 @@ body {
   gap: 0.2rem;
 }
 .likes b:first-child,
-.posts b:first-child{
+.posts b:first-child {
   color: var(--primary);
   font-weight: bold;
 }
 .likes b:last-child,
-.posts b:last-child{
+.posts b:last-child {
   color: var(--text-muted);
   font-weight: bold;
   text-transform: uppercase;
@@ -313,7 +312,7 @@ body {
   border-radius: var(--radius);
 }
 
-.create_post_form b{
+.create_post_form b {
   text-align: center;
   color: var(--text-muted);
 }
@@ -356,4 +355,9 @@ textarea {
   resize: vertical;
   min-height: 100px;
   field-sizing: content;
+}
+
+.single_post_container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
 }
